@@ -1,0 +1,325 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap');
+@import './svg';
+@import './loading';
+@import './graphic';
+
+@mixin imgBG {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+@mixin transition1 {
+  transition: 0.4s ease;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  overflow-x: hidden;
+}
+
+a {
+  @include transition1();
+}
+
+a:hover {
+  color: #333;
+  opacity: 0.8;
+  @include transition1();
+  text-decoration: none;
+}
+
+h3 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  padding: 20px 0;
+  text-align: center;
+}
+
+nav {
+  z-index: 100;
+
+  .nav-item {
+    font-size: 18px;
+  }
+
+  li {
+    padding-left: 15px;
+    @include transition1();
+
+    .nav-link.active {
+      border-bottom: 2px solid black;
+      animation: fadeIn 0.5s;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0.5;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+  }
+
+  a:hover {
+    opacity: 1 !important;
+    color: #333 !important;
+  }
+
+  .nav-link.shop {
+    border: 1px solid #333333;
+    border-radius: 5px;
+
+    &:hover {
+      background: rgba(51, 51, 51, 0.9);
+      color: #fff !important;
+    }
+  }
+
+  .hamburger {
+    outline: none;
+    border: none;
+    @include transition1();
+    display: none;
+  }
+  .navbar-toggler-icon {
+    background-image: url(/img/menu.svg) !important;
+  }
+
+  @media (max-width: 1199px) {
+    li {
+      margin-left: -12px;
+    }
+    .hamburger {
+      display: block;
+    }
+
+    .nav-link.shop {
+      border: none;
+      border-radius: none;
+
+      &:hover {
+        background: transparent;
+        color: #333 !important;
+      }
+    }
+  }
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  width: 150px;
+}
+
+@media (max-width: 500px) {
+  .logo {
+    width: 100px;
+  }
+}
+
+.wrap {
+  max-width: 1800px;
+  margin: auto;
+  padding: 1.5rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 1.5rem;
+}
+
+.item {
+  padding: 3rem;
+  // border: #ccc 1px solid;
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-align: center;
+  position: relative;
+}
+
+.item:first-child,
+.item:nth-child(6) {
+  grid-column: 1 / span 6;
+  height: 686px;
+}
+.item:nth-child(2),
+.item:nth-child(7) {
+  grid-column: 7 / span 4;
+  height: 686px;
+}
+.item:nth-child(3),
+.item:nth-child(8) {
+  grid-column: 1 / span 5;
+  height: 742px;
+}
+.item:nth-child(4),
+.item:nth-child(9) {
+  grid-column: 6 / span 5;
+  height: 742px;
+}
+.item:nth-child(5) {
+  grid-column: 1 / span 10;
+  height: 500px;
+}
+
+@media (max-width: 860px) {
+  .item:nth-child(-n + 10) {
+    grid-column: 1 / span 10;
+  }
+}
+
+@media (max-width: 600px) {
+  .item {
+    height: 400px !important;
+  }
+}
+
+.item:first-child {
+  // background: url(/img/jade-01.png);
+  @include imgBG();
+}
+.item:nth-child(2) {
+  background: url(/img/jade-02.png);
+  @include imgBG();
+}
+.item:nth-child(3) {
+  background: url(/img/jade-03.png);
+  @include imgBG();
+}
+.item:nth-child(4) {
+  background: url(/img/jade-04.png);
+  @include imgBG();
+}
+.item:nth-child(5) {
+  background: url(/img/jade-guild.png);
+  @include imgBG();
+}
+
+.item:nth-child(6) {
+  background: url(/img/jade-07.png);
+  @include imgBG();
+}
+.item:nth-child(7) {
+  background: url(/img/jade-08.png);
+  @include imgBG();
+}
+.item:nth-child(8) {
+  background: url(/img/jade-09.png);
+  @include imgBG();
+}
+.item:nth-child(9) {
+  background: url(/img/jade-10.png);
+  @include imgBG();
+}
+
+.img-info-caption {
+  cursor: pointer;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  @include transition1();
+
+  &:hover {
+    opacity: 1;
+    background: rgba($color: #fff, $alpha: 1);
+    @include transition1();
+  }
+}
+
+form {
+  label {
+    display: block;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    outline: none;
+    padding: 5px;
+  }
+
+  .contactBtn,
+  .wpforms-submit {
+    font-size: 18px !important;
+    width: 100% !important;
+    background: #333 !important;
+    color: white !important;
+    cursor: pointer !important;
+    border: none !important;
+    border-radius: 10px !important;
+    @include transition1();
+
+    &:hover {
+      color: black !important;
+      background: rgb(201, 200, 200) !important;
+      @include transition1();
+    }
+  }
+}
+
+footer {
+  background: rgba(241, 241, 241, 0.4);
+
+  .web-created {
+    text-align: right;
+  }
+
+  @media (max-width: 991px) {
+    .back-to-top,
+    .web-created {
+      text-align: center !important;
+      padding-bottom: 15px;
+    }
+  }
+}
+
+.item h4,
+.item-g h4 {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+@media (max-width: 500px) {
+  .item h4,
+  .item-g h4 {
+    font-size: 20px;
+    font-weight: 700;
+  }
+}
+
+i {
+  padding: 0 5px !important;
+}
+
+.button-standard {
+  border: none !important;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #f4f4f4;
+  background: #333;
+  padding: 10px;
+  outline: none;
+
+  &:focus {
+    outline: none;
+  }
+}

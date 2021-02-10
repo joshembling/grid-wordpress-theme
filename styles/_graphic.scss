@@ -1,0 +1,129 @@
+@mixin imgBG {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+@mixin transition1 {
+  transition: 0.4s ease;
+}
+
+.grid-g {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 1.5rem;
+}
+
+.item-g {
+  padding: 3rem;
+  // border: #ccc 1px solid;
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-align: center;
+  position: relative;
+}
+
+.item-g:first-child,
+.item-g:nth-child(5) {
+  grid-column: 1 / span 6;
+  height: 786px;
+}
+.item-g:nth-child(2),
+.item-g:nth-child(6) {
+  grid-column: 7 / span 4;
+  height: 786px;
+}
+.item-g:nth-child(3) {
+  grid-column: 1 / span 4;
+  height: 838px;
+}
+.item-g:nth-child(4) {
+  grid-column: 5 / span 6;
+  height: 838px;
+}
+.item-g:nth-child(7) {
+  grid-column: 1 / span 5;
+  height: 821px;
+}
+.item-g:nth-child(8) {
+  grid-column: 6 / span 5;
+  height: 821px;
+}
+
+@media (max-width: 1024px) {
+  .item-g {
+    height: 600px !important;
+  }
+}
+
+@media (max-width: 860px) {
+  .item-g:nth-child(-n + 10) {
+    grid-column: 1 / span 10;
+  }
+  .item-g:first-child {
+    height: 500px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .item-g {
+    height: 400px !important;
+  }
+  .item-g:first-child {
+    height: 300px !important;
+  }
+}
+
+.item-g:first-child {
+  background: url(/img/g-01.png);
+  @include imgBG();
+}
+.item-g:nth-child(2) {
+  background: url(/img/g-02.png);
+  @include imgBG();
+}
+.item-g:nth-child(3) {
+  background: url(/img/g-03.png);
+  @include imgBG();
+}
+.item-g:nth-child(4) {
+  background: url(/img/g-04.png);
+  @include imgBG();
+}
+.item-g:nth-child(5) {
+  background: url(/img/g-05.png);
+  @include imgBG();
+}
+
+.item-g:nth-child(6) {
+  background: url(/img/g-06.png);
+  @include imgBG();
+}
+.item-g:nth-child(7) {
+  background: url(/img/g-07.png);
+  @include imgBG();
+}
+.item-g:nth-child(8) {
+  background: url(/img/g-08.png);
+  @include imgBG();
+}
+
+.img-info-caption {
+  cursor: pointer;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  @include transition1();
+
+  &:hover {
+    opacity: 1;
+    background: rgba($color: #fff, $alpha: 1);
+    @include transition1();
+  }
+}
